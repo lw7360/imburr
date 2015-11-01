@@ -1,0 +1,48 @@
+{
+  "name": "imburr",
+  "productName": "Imburr",
+  "version": "0.0.1",
+  "description": "Easy imgur uploads",
+  "license": "MIT",
+  "repository": "lw7360/imburr",
+  "author": {
+    "name": "Larry Wu",
+    "email": "lw7360@gmail.com",
+    "url": "http://larrywu.com/"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "electronVersion": "0.34.1",
+  "scripts": {
+    "test": "semistandard",
+    "start": "electron .",
+    "build": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --all --version=$npm_package_electronVersion"
+  },
+  "files": [
+    "app.js",
+    "index.js",
+    "index.html",
+    "index.css"
+  ],
+  "keywords": [
+    "electron-app"
+  ],
+  "dependencies": {
+    "electron-debug": "^0.3.0",
+    "jquery": "^2.1.4",
+    "open": "0.0.5"
+  },
+  "devDependencies": {
+    "electron-packager": "^5.0.0",
+    "electron-prebuilt": "^0.34.1",
+    "semistandard": "^7.0.2"
+  },
+  "semistandard": {
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser"
+    ]
+  }
+}

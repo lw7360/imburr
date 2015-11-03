@@ -1,5 +1,12 @@
+var Bacon = require('baconjs').Bacon;
 var $ = require('jquery');
+$.fn.asEventStream = Bacon.$.asEventStream;
 var open = require('open');
+var store = require('store');
+
+if (!store.get('uploads')) {
+  store.set('uploads', []);
+}
 
 var clientID = '69eb9f84f6aff83';
 var holder = document.documentElement;
@@ -19,7 +26,9 @@ function readfiles (files) {
       data: formData,
       success: function (response) {
         if (response.success) {
+          store.set('uploads', store.get('uploads').concat(response.data.link));
           open(response.data.link);
+          showUploads();
         } else {
           alert("Couldn't upload");
         }
@@ -34,17 +43,29 @@ function readfiles (files) {
   }
 }
 
+function showUploads() {
+  Bacon.fromArray(store.get('uploads')).onValue(function (value) {
+    console.log(value);
+  });
+}
+showUploads();
+
 holder.ondragover = function (e) {
   e.preventDefault();
-  console.log('ondragover');
+  $('#instructions').addClass('animated infinite shake');
 };
 
 holder.ondragend = function () {
-  console.log('ondragend');
+  $('#instructions').removeClass('animated infinite shake');
 };
 
-holder.ondrop = function (e) {
-  e.preventDefault();
-  console.log('ondrop');
-  readfiles(e.dataTransfer.files);
+holder.ondragleave = function () {
+  $('#instructions').removeClass('animated infinite shake');
 };
+
+var drop = $(holder).asEventStream('drop').doAction('.preventDefault');
+
+drop.onValue(function(e) {
+  $('#instructions').removeClass('animated infinite shake');
+  readfiles(e.originalEvent.dataTransfer.files);
+});

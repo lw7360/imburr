@@ -29,9 +29,11 @@
     "electron-app"
   ],
   "dependencies": {
+    "baconjs": "^0.7.79",
     "electron-debug": "^0.3.0",
     "jquery": "^2.1.4",
-    "open": "0.0.5"
+    "open": "0.0.5",
+    "store": "^1.3.17"
   },
   "devDependencies": {
     "electron-packager": "^5.0.0",

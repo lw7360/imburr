@@ -1,6 +1,7 @@
 var Bacon = require('baconjs').Bacon;
 var $ = require('jquery');
 $.fn.asEventStream = Bacon.$.asEventStream;
+var ipc = require('ipc');
 var open = require('open');
 var titlebar = require('titlebar')();
 
@@ -61,3 +62,7 @@ drop.onValue(function(e) {
   $('#instructions').removeClass('animated infinite shake');
   readfiles(e.originalEvent.dataTransfer.files);
 });
+
+setTimeout(function () {
+  ipc.send('ready')
+}, 10);

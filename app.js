@@ -1,6 +1,7 @@
 'use strict';
 const app = require('app');
 const BrowserWindow = require('browser-window');
+const ipc = require('ipc');
 
 // report crashes to the Electron project
 require('crash-reporter').start();
@@ -17,16 +18,23 @@ function onClosed () {
   mainWindow = null;
 }
 
+var frame = process.platform === 'win32';
+
 function createMainWindow () {
   const win = new BrowserWindow({
     width: 300,
     height: 300,
-    resizable: false,
-    frame: false
+    frame: frame,
+    show: false,
+    resizable: false
   });
 
   win.loadUrl('file://' + __dirname + '/index.html');
   win.on('closed', onClosed);
+
+  ipc.on('ready', function () {
+    win.show()
+  });
 
   return win;
 }

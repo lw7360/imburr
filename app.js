@@ -26,6 +26,7 @@ function createMainWindow () {
     height: 300,
     frame: frame,
     show: false,
+    icone: 'icon.png',
     resizable: false
   });
 

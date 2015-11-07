@@ -18,7 +18,9 @@
   "scripts": {
     "test": "semistandard",
     "start": "electron .",
-    "build": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --all --version=$npm_package_electronVersion"
+    "mac-bundle": "electron-packager . $npm_package_productName --platform=darwin --arch=x64 --icon=icon.icns --out=dist --ignore='^/dist$' --prune --asar --version=$npm_package_electronVersion",
+    "win-bundle": "electron-packager . $npm_package_productName --platform=win32 --arch=ia32 --out=dist --ignore='^/dist$' --prune --asar --version=$npm_package_electronVersion",
+    "linux-64-bundle": "electron-packager . $npm_package_productName --platform=linux --arch=x64 --icon=icon.icns --out=dist --ignore='^/dist$' --prune --asar --version=$npm_package_electronVersion"
   },
   "files": [
     "app.js",

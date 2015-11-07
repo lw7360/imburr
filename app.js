@@ -36,21 +36,23 @@ function createMainWindow () {
     win.show()
   });
 
+  ipc.on('close', function () {
+    app.quit();
+  });
+
+  ipc.on('minimize', function () {
+    win.minimize();
+  });
+
   return win;
 }
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
-
-app.on('activate-with-no-open-windows', () => {
+app.on('activate-with-no-open-windows', function () {
   if (!mainWindow) {
     mainWindow = createMainWindow();
   }
 });
 
-app.on('ready', () => {
+app.on('ready', function () {
   mainWindow = createMainWindow();
 });

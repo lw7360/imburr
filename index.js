@@ -63,6 +63,14 @@ drop.onValue(function(e) {
   readfiles(e.originalEvent.dataTransfer.files);
 });
 
+titlebar.on('close', function () {
+  ipc.send('close')
+});
+
+titlebar.on('minimize', function () {
+  ipc.send('minimize')
+});
+
 setTimeout(function () {
   ipc.send('ready')
 }, 10);

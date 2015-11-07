@@ -34,7 +34,7 @@ function createMainWindow () {
   win.on('closed', onClosed);
 
   ipc.on('ready', function () {
-    win.show()
+    win.show();
   });
 
   ipc.on('close', function () {

@@ -1,6 +1,6 @@
-# app
+# imburr
 
-> My superb app
+> Easy imgur uploads
 
 
 ## Dev

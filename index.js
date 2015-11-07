@@ -58,19 +58,19 @@ holder.ondragleave = function () {
 
 var drop = $(holder).asEventStream('drop').doAction('.preventDefault');
 
-drop.onValue(function(e) {
+drop.onValue(function (e) {
   $('#instructions').removeClass('animated infinite shake');
   readfiles(e.originalEvent.dataTransfer.files);
 });
 
 titlebar.on('close', function () {
-  ipc.send('close')
+  ipc.send('close');
 });
 
 titlebar.on('minimize', function () {
-  ipc.send('minimize')
+  ipc.send('minimize');
 });
 
 setTimeout(function () {
-  ipc.send('ready')
+  ipc.send('ready');
 }, 10);

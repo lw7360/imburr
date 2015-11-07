@@ -18,12 +18,14 @@ $ npm start
 ### Build
 
 ```
-$ npm run build
+$ npm run mac-bundle
+$ npm run win-bundle
+$ npm run linux-64-bundle
 ```
 
-Builds the app for OS X, Linux, and Windows, using [electron-packager](https://github.com/maxogden/electron-packager).
+Builds the app for OS X, Linux, or Windows, using [electron-packager](https://github.com/maxogden/electron-packager).
 
 
 ## License
 
-MIT © [<%= name %>](<%= website %>)
+MIT © [Larry Wu](http://larrywu.com/)

@@ -30,11 +30,11 @@ function readfiles (files) {
         if (response.success) {
           open(response.data.link);
         } else {
-          alert("Couldn't upload");
+          // Couldn't upload
         }
       },
       error: function (xhr, ajaxOptions, thrownError) {
-        alert("Couldn't upload");
+        // Couldn't upload
       },
       cache: false,
       contentType: false,

@@ -2,6 +2,8 @@
 
 > Easy imgur uploads
 
+![imburr](screenshot.png)
+
 
 ## Dev
 
